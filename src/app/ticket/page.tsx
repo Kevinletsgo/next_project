@@ -11,10 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-
-import { Separator } from '@/components/ui/separator';
 import { LucidePencil, LucideCircleCheck, LucideLoader } from 'lucide-react';
-
+import {Heading} from "@/components/heading"
 const TicketIcons = {
   "OPEN": <LucidePencil />,
   "DONE": <LucideCircleCheck />,
@@ -23,11 +21,10 @@ const TicketIcons = {
 const Ticketpage = () => {
   return (
     <div className="flex-1 flex flex-col gap-y-4">
-      <div>      
-        <h1 className="text-3xl font-bold tracking-tight">Tickets</h1>
-        <p className="text-sm text-muted-foreground">Welcome to the Ticket Page</p>
-      </div>
-      <Separator/>
+      <Heading
+        title="Tickets"
+        description="Welcome to the Ticket Page"
+      />
       <div className="flex-1 flex flex-col gap-y-4 items-center animate-fade-in-up">
         {initialTicket.map((ticket) => (
           <Card key={ticket.id} className="w-full max-w-[420px]">
