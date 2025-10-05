@@ -4,6 +4,8 @@ import { ticketsPath } from "@/app/path";
 import { homePath } from "@/app/path";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { buttonVariants } from "@/components/ui/button";
+import { LucideKanban } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,17 +36,18 @@ export default function RootLayout({
           className="
             supports-backdrop-blur:bg-secondary/60
             fixed le0 right-0 top-0 z-20
-            border-b bg-black/10 backdrop-blur
+            border-b bg-white/60 backdrop-blur
             w-full flex py-2.5 px-5 justify-between"
         > 
           <div> 
-            <Link href={homePath()} className="underline text-lg border-b-2 border-transparent hover:border-b-blue-500">
-              Home
+            <Link href={homePath()} className={buttonVariants({ variant: "ghost"})}>
+              <LucideKanban />
+              <h1 className="text-lg font-semi">TicketBonus</h1>
             </Link>
           </div>
           <div> 
-            <Link href={ticketsPath()} className="underline text-lg border-b-2 border-transparent hover:border-b-blue-500">
-              Tickets
+            <Link href={ticketsPath()} className={buttonVariants({ variant: "default"})}>
+            <h1 className="text-lg font-semi">Tickets</h1>
             </Link>
           </div>
         </nav>
