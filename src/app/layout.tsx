@@ -7,6 +7,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { buttonVariants } from "@/components/ui/button";
 import { LucideKanban } from "lucide-react";
 import {Header} from "@/components/header"
+import { ThemeProvider } from "@/components/theme/theme-provider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,20 +29,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <main 
-          className="
-            min-h-screen flex-1 
-            overflow-auto overflow-hidden
-            py-24 px-8
-            bg-secondary/20
-            flex flex-col animate-fade-in-up">
-          {children}
-        </main>
+        <ThemeProvider>
+          <Header />
+          <main 
+            className="
+              min-h-screen flex-1 
+              overflow-auto overflow-hidden
+              py-24 px-8
+              bg-secondary/20
+              flex flex-col animate-fade-in-up">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

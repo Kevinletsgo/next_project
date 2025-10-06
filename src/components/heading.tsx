@@ -14,7 +14,7 @@ const Heading = ({ title, description }: HeadingProps) => {
         <p className="text-sm text-muted-foreground">{description}</p>
         )}
       </div>
-      <Separator/>
+        <Separator/>
     </>
   )
 }

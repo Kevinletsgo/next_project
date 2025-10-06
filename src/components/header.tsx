@@ -2,6 +2,8 @@ import { homePath, ticketsPath } from "@/app/path";
 import { buttonVariants } from "@/components/ui/button";
 import Link from 'next/link';
 import { LucideKanban } from "lucide-react";
+import {ThemeSwitcher} from "@/components/theme/theme-switcher";
+
 const Header = () => {
   return (
     <nav 
@@ -17,7 +19,9 @@ const Header = () => {
           <h1 className="text-lg font-semi">TicketBonus</h1>
         </Link>
       </div>
-      <div> 
+
+      <div className="flex gap-x-2"> 
+        <ThemeSwitcher />       
         <Link href={ticketsPath()} className={buttonVariants({ variant: "default"})}>
         <h1 className="text-lg font-semi">Tickets</h1>
         </Link>
