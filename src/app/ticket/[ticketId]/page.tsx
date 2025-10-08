@@ -1,29 +1,22 @@
-import {initialTicket} from "@/app/data";
-import { PlaceHolder } from "@/components/placeholder";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {ticketsPath} from "@/app/path";
+import { getTicket } from "@/features/ticket/queries/get-ticket";
+import { TicketItem } from "@/features/ticket/components/ticket-item";
+import { notFound } from "next/navigation";
 type Props = {
   params: {
     ticketId: string;
   };
 };
-const Ticketpage = async ({params}: Props) => {
-  const ticket = initialTicket.find((ticket) => ticket.id == params.ticketId);
+const Ticketpage = async  ({ params }: Props) => {
+  const { ticketId } = await params; 
+  const ticket = await getTicket(ticketId);
+
   if(!ticket) return (
-    <div className="flex flex-1 gap-4">
-      <PlaceHolder label="Ticket not found" button={
-        <Button asChild variant="outline"> 
-          <Link href={ticketsPath()}>Back to ticket</Link>
-        </Button>
-      }>
-      </PlaceHolder>
-    </div>
+    //notFound() 会调用自定义的 not-found.tsx 页面
+    notFound()
   );
   return (
-    <div>
-      <h1 className="text-3xl font-bold">{ticket?.title}</h1>
-      <h1 className="text-3xl font-bold">{ticket?.content}</h1>
+    <div className="flex justify-center">
+      <TicketItem ticket={ticket} isDetail={true} />
     </div>
   );
 }

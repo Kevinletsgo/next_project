@@ -19,8 +19,8 @@ const TicketItem = ({ticket, isDetail}: TicketProps) => {
     </Button>
   )
   return (
-    <div className="flex flex-1 gap-x-2">
-      <Card className="w-full max-w-[420px]">
+    <div className="flex flex-1 gap-x-2 w-full max-w-[420px]">
+      <Card className="w-full">
         <CardHeader>
           <CardTitle className="flex gap-x-2">
           <span>{TicketIcons[ticket.status]}</span>
